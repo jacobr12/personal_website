@@ -5,6 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jacob Rubenstein</title>
     <style>
+        .button-container {
+        position: relative;
+    }
+
+    .button-bottom {
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+        .hidden-experiences {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .hidden-experiences.visible {
+            display: block;
+            opacity: 1;
+        }
+        
+        .show-more-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: none;
+            border: 1px solid #e0e0e0;
+            border-radius: 30px;
+            font-size: 1rem;
+            color: #555;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .show-more-btn:hover {
+            background-color: #f8f8f8;
+            color: #4285f4;
+            border-color: #4285f4;
+        }
+        
+        .show-more-btn i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .show-more-btn.expanded i {
+            transform: rotate(180deg);
+        }
         /* Reset and Base Styles */
         * {
             margin: 0;
@@ -231,7 +281,7 @@
         }
         
         .highlight {
-            color: #4285f4;
+            color: #8042f4;
             font-weight: 500;
         }
 
@@ -462,14 +512,102 @@
                             Served as an AI Fellow at <span class = "bold">Consumer Reports</span>, optimizing AskCR's AI systems by enhancing Retrieval-Augmented Generation pipelines and implementing observability features for real-time monitoring and transparency. Conducted policy research on responsible AI deployment, developing a comprehensive state-level AI policy tracker and analyzing emerging regulatory approaches to AI technologies. <span class="highlight">Dedicated to working towards AI systems that are accessible and trustworthy for all users</span>.
                         </p>
                     </div>
-
+                    <div class="narrative-item">
+                        <div class="narrative-image-container">
+                            <img src="ddl.png" alt="Photo at previous company" class="narrative-image">
+                        </div>
+                        <p class="narrative-text">
+                            Worked as a Data Research Assistant at the <span class = "bold">Deliberative Democracy Lab</span>, engineering data pipelines and building machine learning models to analyze democratic processes and public sentiment. Collaborated with policy experts and government agencies to translate complex datasets into standardized reports that directly informed policy recommendations. Committed to <span class="highlight">strengthening democratic institutions through data-driven approaches</span>, promoting inclusive participation and informed discourse.
+                        </p>
+                    </div>
+                    <div id="button-container">
+                        <button id="show-more-btn" class="show-more-btn">
+                            <span>Show More</span>
+                            <i>↓</i>
+                        </button>
+                    </div>
+                    <div id="hidden-experiences" class="hidden-experiences">
+                        <div class="narrative-item">
+                            <div class="narrative-image-container">
+                                <img src="CPGlogo.png" alt="Photo at previous company" class="narrative-image">
+                            </div>
+                            <p class="narrative-text">
+                                Conducted policy and data research for the City of East Palo Alto with <span class = "bold">Cardinal Policy Group</span>, developing evidence-based recommendations on reparations and economic development through data analytics and stakeholder engagement. <span class="highlight">Committed to advancing community-driven solutions that address historical inequities</span> while <span class="highlight">creating pathways for economic mobility in traditionally underserved areas</span>.
+                            </p>
+                        </div>
+                        <div class="narrative-item">
+                            <div class="narrative-image-container">
+                                <img src="spar.png" alt="Photo at previous company" class="narrative-image">
+                            </div>
+                            <p class="narrative-text">
+                                Conducted NLP research as part of the <span class = "bold">Supervised Program for Alignment Research (SPAR)</span>, analyzing the influence of public discourse on U.S. AI policy development in collaboration with RAND Corporation's technology policy experts. Committed to advancing research that works towards <span class="highlight">ensuring technological development remains aligned with public interests and democratic values</span>.
+                            </p>
+                        </div>
+                        <div class="narrative-item">
+                            <div class="narrative-image-container">
+                                <img src="fivekeys.png" alt="Photo at previous company" class="narrative-image">
+                            </div>
+                            <p class="narrative-text">
+                                Served as a Data Intern at <span class = "bold">Five Keys Schools and Programs</span>, helping establish sustainable data analytics systems for educational improvement. Partnered with school leaders to promote data accessibility and literacy through Google BigQuery implementation. <span class="highlight">Committed to addressing educational inequity in underserved communities</span> by empowering educators with resources that bridge opportunity gaps and <span class="highlight">create more responsive learning environments for traditionally marginalized students</span>.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title fade-in">Projects & Papers</h2>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card fade-in">
+                    <img src="arch.png" alt="Project Title" class="project-image">
+                    <div class="project-content">
+                        <span class="project-category">CS Research</span>
+                        <h3 class="project-title">Improving Clinical Trial Outcome Prediction: Causal Machine Unlearning Approach and LLM Augmented Dataset Enhancement</h3>
+                        <p class="project-description">Developed a <span class="highlight">novel student-teacher framework to address spurious correlations</span> in pharmaceutical data prediction. Our approach extends existing architectures with <span class="highlight">dynamic UnLearning from Experience (dULE)</span> while leveraging LLMs to expand training datasets, targeting a field where <span class="highlight">accurate predictions can significantly impact human lives</span>.</p>
+                        <a href="https://drive.google.com/file/d/1Nj7YnAtVkOwbN2WSqgYwnKNrP1vr9qhj/view?usp=sharing" class="project-link">See Project Poster </a><br>
+                        <a href="https://drive.google.com/file/d/115A5DkazHlCd1dyRFRoHeN7FlhqB6Eb5/view?usp=sharing" class="project-link">Read Paper</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card fade-in">
+                    <img src="desmos.png" alt="Project Title" class="project-image">
+                    <div class="project-content">
+                        <span class="project-category">Math Research Paper</span>
+                        <h3 class="project-title">Hermite Polynomials: Theory and Applications</h3>
+                        <p class="project-description">Conducted mathematical research on Hermite polynomials, <span class="highlight">deriving their properties from differential equations and exploring their orthogonality relationships through Sturm-Liouville theory</span>. Demonstrated practical applications in function approximation by developing Hermite series expansions, <span class="highlight">showing how these polynomials efficiently represent functions with Gaussian characteristics for use in quantum mechanics and numerical analysis.</span></p>
+                        <a href="https://drive.google.com/file/d/1oMV9EZGgjJCPLJq7XAJHeostDdTB-VUb/view?usp=sharing" class="project-link">Read Paper</a>
+                    </div>
+                </div>
+                
+                <!-- Paper 1 -->
+                <div class="project-card fade-in">
+                    <img src="treehacks_logo.jpeg" alt="Paper Title" class="project-image">
+                    <div class="project-content">
+                        <span class="project-category">TreeHacks</span>
+                        <h3 class="project-title">TreeHacks 2024 Opening Ceremony Video</h3>
+                        <p class="project-description">Helped create and starred in the TreeHacks Opening Ceremony video that <span class="highlight">welcomed 1500+ participants to Stanford's premier hackathon</span>. Introduced the event's vision, highlighted key features of the weekend, and energized the crowd!</p>
+                        <a href="https://drive.google.com/file/d/1KnMQ_-JK2Q7QKa3Z5yKBYb8z2wCf6XaU/view?usp=sharing" class="project-link">Watch Video</a>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <img src="treehacks_logo.jpeg" alt="Paper Title" class="project-image">
+                    <div class="project-content">
+                        <span class="project-category">TreeHacks</span>
+                        <h3 class="project-title">TreeHacks 2025 Opening Ceremony Video</h3>
+                        <p class="project-description">Helped create and starred in the TreeHacks Opening Ceremony video that <span class="highlight">welcomed 1500+ participants to Stanford's premier hackathon</span>. Introduced the event's vision, highlighted key features of the weekend, and energized the crowd!</p>
+                        <a href="https://drive.google.com/file/d/1KnMQ_-JK2Q7QKa3Z5yKBYb8z2wCf6XaU/view?usp=sharing" class="project-link">Watch Video</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Simple Contact Section -->
     <section id="contact">
@@ -523,6 +661,29 @@
             
             // Check on scroll
             window.addEventListener('scroll', checkFade);
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const showMoreBtn = document.getElementById('show-more-btn');
+            const hiddenExperiences = document.getElementById('hidden-experiences');
+            const buttonContainer = document.getElementById('button-container');
+            
+            if (showMoreBtn && hiddenExperiences) {
+                showMoreBtn.addEventListener('click', function() {
+                    hiddenExperiences.classList.toggle('visible');
+                    showMoreBtn.classList.toggle('expanded');
+                    
+                    if (showMoreBtn.classList.contains('expanded')) {
+                        showMoreBtn.querySelector('span').textContent = 'Show Less';
+                        // Move button to bottom of hidden experiences
+                        hiddenExperiences.appendChild(showMoreBtn);
+                    } else {
+                        showMoreBtn.querySelector('span').textContent = 'Show More';
+                        // Move button back to original position
+                        buttonContainer.appendChild(showMoreBtn);
+                    }
+                });
+            }
         });
     </script>
 </body>
