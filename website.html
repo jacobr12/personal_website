@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacob Rubenstein</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #4285f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid #f0f0f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .logo-text {
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .logo-text span {
+            display: inline-block;
+            transform: translateY(100%);
+            animation: dropIn 1.2s forwards;
+        }
+
+        @keyframes dropIn {
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            font-size: 1rem;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #4285f4;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 10px 0 40px 0;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 30px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .accent-bar {
+            width: 60px;
+            height: 3px;
+            background-color: #4285f4;
+            margin-bottom: 30px;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: #4285f4;
+            bottom: -10px;
+            left: 0;
+        }
+
+        /* Experience Section - Narrative Style */
+        .experience-container {
+            margin-top: 30px;
+        }
+        
+        .experience-group {
+            margin-bottom: 50px;
+        }
+        
+        .experience-heading {
+            font-size: 1.2rem;
+            color: #777;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .experience-heading::after {
+            content: '';
+            position: absolute;
+            height: 1px;
+            background: #eee;
+            width: calc(100% - 100px);
+            top: 50%;
+            margin-left: 15px;
+        }
+        
+        .narrative-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .narrative-item:hover {
+            transform: translateX(5px);
+        }
+
+        .narrative-image-container {
+            width: 150px;  /* Fixed width container */
+            height: 80px;  /* Fixed height container */
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center;     /* Center vertically */
+            flex-shrink: 0;          /* Prevent container from shrinking */
+        }
+
+        .narrative-image {
+            max-width: 130px;     /* Maximum width within container */
+            max-height: 70px;     /* Maximum height within container */
+            object-fit: contain;  /* Show entire logo without cropping */
+            border-radius: 4px;   /* Slight rounding of corners */
+        }
+        
+        .narrative-text {
+            flex: 1;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #444;
+        }
+        
+        .highlight {
+            color: #4285f4;
+            font-weight: 500;
+        }
+
+        .bold {
+            color: #000000;
+            font-weight: 700;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-radius: 5px;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 15px;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .project-category {
+            display: inline-block;
+            background-color: #f0f4ff;
+            color: #4285f4;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+
+        .project-description {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .project-link {
+            color: #4285f4;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .project-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #4285f4;
+            bottom: -4px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .project-link:hover::after {
+            width: 100%;
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 40px 0;
+            }
+
+            .hero-content {
+                padding-right: 0;
+                margin-top: 40px;
+            }
+
+            .accent-bar {
+                margin: 0 auto 30px;
+            }
+
+            .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .section-title, .section-description {
+                text-align: center;
+            }
+
+            .experience-items {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <div class="logo-text" id="animated-name">
+                        <!-- JavaScript will populate this with animated letters -->
+                    </div>
+                </div>
+                <div class="nav-links">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero">
+                <div class="hero-content fade-in">
+                    <h1 class="hero-title">Hello, I'm <span class="highlight">Jacob Rubenstein</span></h1>
+                    <div class="accent-bar"></div>
+                    <p class="hero-subtitle"> I'm a junior at Stanford studying Computer Science, Math, and Public Policy. I'm continuously developing my technical and quantitative skills through research and practical applications in software development, data science, and technology consulting across various organizations. My passion lies in ensuring that technology is created and deployed in a responsible manner, working at the intersection of innovation and social impact to shape how technology benefits society.</p>
+                    <p class="hero-subtitle">I enjoy thinking about policy </p>
+                </div>
+                <div class="hero-image fade-in">
+                    <!-- Replace with your actual photo -->
+                    <img src="choice1.png" alt="Jacob Rubenstein" class="profile-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Section - Narrative Format -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title fade-in">Experience</h2>
+            
+            <div class="experience-container">
+                <!-- Current Experience -->
+                <div class="experience-group fade-in">
+                    <h3 class="experience-heading">Currently</h3>
+                    
+                    <!-- Current Experience 1 -->
+                    <div class="narrative-item">
+                        <div class="narrative-image-container">
+                            <img src="recidiviz.png" alt="Recidiviz logo" class="narrative-image">
+                        </div>
+                        <p class="narrative-text">
+                            Working as a Data Science and Implementation Engineering Intern at <span class="bold">Recidiviz</span>, a non-profit <span class="highlight">building open-source infrastructure to reform the criminal justice system</span>. Developing machine learning models and predictive analytics to transform complex datasets into actionable insights for policy improvement. Passionate about <span class="highlight">using data as a catalyst for creating more equitable justice outcomes and reducing incarceration rates</span>, expanding Recidiviz's impact to communities most impacted by mass incarceration.
+                        </p>
+                    </div>
+                    <!-- Stanford PoliSci Experience -->
+                    <div class="narrative-item">
+                        <div class="narrative-image-container">
+                            <img src="stanfordpolisci.jpeg" alt="Stanford Political Science Department" class="narrative-image">
+                        </div>
+                        <p class="narrative-text">
+                            Working with <span class="bold">Stanford's Political Science Department</span> and Professor Rob Reich on research initiatives at the <span class="highlight">intersection of technology, policy, and governance</span>. Supporting the development of new academic programs and course offerings that explore how technology shapes our society and institutions. Super interested in advancing these important conversations on campus and <span class="highlight">ensuring students have access to frameworks and opportunites for thinking critically about technology's impact on our world</span>.
+                        </p>
+                    </div>
+                </div>
+                
+                    <!-- TreeHacks Experience -->
+                    <div class="narrative-item">
+                        <div class="narrative-image-container">
+                            <img src="treehacks2.png" alt="TreeHacks logo" class="narrative-image">
+                        </div>
+                        <p class="narrative-text">
+                            Executive Leadership organizing for <span class="bold">TreeHacks</span>, the largest collegiate hackathon in the world. Implemented data-driven marketing strategies, achieving a 55% increase in applications for a <span class="highlight">record-breaking 12,000+ applicants from 300+ universities</span>. Coordinated logistics while helping lead team of 25 organizers, planning and carrying out event with <span class="highlight">1500+ hackers, sponsors, and judges</span>.
+                        </p>
+                    </div>
+                    <div class="experience-group fade-in">
+                        <h3 class="experience-heading">Previously</h3>
+                    
+                    <!-- Previous Experience 2 -->
+                    <div class="narrative-item">
+                        <div class="narrative-image-container">
+                            <img src="nist.jpg" alt="Photo at earlier company" class="narrative-image">
+                        </div>
+                        <p class="narrative-text">
+                            Served as an international team intern at the <span class = "bold">US AI Safety Institute (NIST)</span>, helping design technical objectives to evaluate frontier AI systems while coordinating with international counterparts. Developed standardized evaluation frameworks and designed technical assessments of emerging AI capabilities, translating results into actionable policy recommendations for senior leadership. Committed to <span class="highlight">ensuring AI technologies are developed safely and responsibly</span> worldwide, <span class="highlight">working toward technological progress that prioritizes human wellbeing and guards against potential risks as these powerful systems continue to advance</span>.
+                        </p>
+                    </div>
+                    <!-- Previous Experience 1 -->
+                    <div class="narrative-item">
+                        <div class="narrative-image-container">
+                            <img src="cr.png" alt="Photo at previous company" class="narrative-image">
+                        </div>
+                        <p class="narrative-text">
+                            Served as an AI Fellow at <span class = "bold">Consumer Reports</span>, optimizing AskCR's AI systems by enhancing Retrieval-Augmented Generation pipelines and implementing observability features for real-time monitoring and transparency. Conducted policy research on responsible AI deployment, developing a comprehensive state-level AI policy tracker and analyzing emerging regulatory approaches to AI technologies. <span class="highlight">Dedicated to working towards AI systems that are accessible and trustworthy for all users</span>.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    
+
+    <!-- Simple Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <p class="fade-in" style="text-align: center; margin-top: 40px;">
+                <a href="mailto:your.email@example.com" style="margin: 0 15px; font-weight: 500;">Email</a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" style="margin: 0 15px; font-weight: 500;">LinkedIn</a>
+                <a href="https://github.com/yourusername" target="_blank" style="margin: 0 15px; font-weight: 500;">GitHub</a>
+            </p>
+        </div>
+    </section>
+
+    <script>
+        // Animated name effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const name = "JACOB RUBENSTEIN"; // Your name
+            const nameContainer = document.getElementById('animated-name');
+            
+            // Clear any existing content
+            nameContainer.innerHTML = '';
+            
+            // Create animated spans for each letter
+            for (let i = 0; i < name.length; i++) {
+                const span = document.createElement('span');
+                span.textContent = name[i];
+                if (name[i] === ' ') {
+                    span.style.width = '10px'; // Explicitly set width for space
+                    span.innerHTML = '&nbsp;'; // Use non-breaking space
+                }
+                span.style.animationDelay = `${i * 0.1}s`;
+                nameContainer.appendChild(span);
+            }
+            
+            // Scroll animation for fade-in elements
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            function checkFade() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Initial check
+            checkFade();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkFade);
+        });
+    </script>
+</body>
+</html>
