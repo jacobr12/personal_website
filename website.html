@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jacob Rubenstein</title>
     <style>
+        body {
+        padding-bottom: 50px; /* Adjust based on the height of your footer */
+    }
         .button-container {
         position: relative;
     }
@@ -23,6 +26,12 @@
         
         .hidden-experiences.visible {
             display: block;
+            opacity: 1;
+        }
+        
+        /* This is the change - making hidden projects use contents display to maintain grid layout */
+        #hidden-projects.visible {
+            display: contents;
             opacity: 1;
         }
         
@@ -201,6 +210,14 @@
         section {
             padding: 40px 0;
         }
+        /* Remove space between hero and experience */
+        section.hero {
+            padding-bottom: 0;
+        }
+
+        section#experience {
+            padding-bottom: 0;
+        }
 
         .section-title {
             font-size: 2rem;
@@ -290,61 +307,77 @@
             font-weight: 700;
         }
 
-        /* Projects Section */
+        /* Projects Section - UPDATED FOR MINIMALIST DESIGN */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Smaller cards */
+            gap: 25px; /* Reduced gap */
+            margin-top: 20px;
         }
 
         .project-card {
             transition: transform 0.3s ease;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Lighter shadow */
             border-radius: 5px;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            transform: translateY(-3px); /* Smaller lift effect */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08); /* Smaller shadow on hover */
         }
 
         .project-image {
             width: 100%;
-            height: 200px;
+            height: 140px; /* Reduced height */
             object-fit: cover;
         }
 
         .project-content {
-            padding: 15px;
+            padding: 12px; /* Reduced padding */
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .project-title {
-            font-size: 1.2rem;
+            font-size: 1rem; /* Smaller font */
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            line-height: 1.3;
         }
 
         .project-category {
             display: inline-block;
             background-color: #f0f4ff;
             color: #4285f4;
-            padding: 4px 10px;
+            padding: 3px 8px; /* Smaller padding */
             border-radius: 20px;
-            font-size: 0.8rem;
-            margin-bottom: 15px;
+            font-size: 0.7rem; /* Smaller font */
+            margin-bottom: 8px;
         }
 
         .project-description {
             color: #555;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            font-size: 0.85rem; /* Smaller font */
+            line-height: 1.4;
+            flex-grow: 1;
+        }
+
+        .project-links {
+            margin-top: auto; /* Push links to the bottom */
         }
 
         .project-link {
             color: #4285f4;
             font-weight: 500;
             position: relative;
+            font-size: 0.85rem; /* Smaller font */
+            display: inline-block;
+            margin-right: 12px;
         }
 
         .project-link::after {
@@ -353,7 +386,7 @@
             width: 0;
             height: 2px;
             background-color: #4285f4;
-            bottom: -4px;
+            bottom: -2px;
             left: 0;
             transition: width 0.3s ease;
         }
@@ -428,7 +461,7 @@
                     <a href="#about" class="nav-link">About</a>
                     <a href="#experience" class="nav-link">Experience</a>
                     <a href="#projects" class="nav-link">Projects</a>
-                    <a href="#contact" class="nav-link">Contact</a>
+               
                 </div>
             </nav>
         </div>
@@ -441,16 +474,28 @@
                 <div class="hero-content fade-in">
                     <h1 class="hero-title">Hello, I'm <span class="highlight">Jacob Rubenstein</span></h1>
                     <div class="accent-bar"></div>
-                    <p class="hero-subtitle"> I'm a junior at Stanford studying Computer Science, Math, and Public Policy. I'm continuously developing my technical and quantitative skills through research and practical applications in software development, data science, and technology consulting across various organizations. My passion lies in ensuring that technology is created and deployed in a responsible manner, working at the intersection of innovation and social impact to shape how technology benefits society.</p>
-                    <p class="hero-subtitle">I enjoy thinking about policy </p>
+                    <p class="hero-subtitle"> I'm a junior at Stanford studying Computer Science, Math, and Public Policy. I'm continuously developing my technical and quantitative skills through classes, experiences, and projects. I'm passionate about how thoughtful policy frameworks can guide equitable and beneficial outcomes. My passion lies in ensuring that technology is created and deployed in a responsible manner, working at the intersection of innovation, social impact, and policy to shape how technology benefits society.</p>
+                    <!-- Contact Links -->
+                    <div class="contact-links" style="margin-top: 15px; display: flex; gap: 20px;">
+                        <a href="mailto:jacobr1@stanford.edu" style="color: #4285f4; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center;">
+                            <span style="border-bottom: 2px solid transparent; transition: border-color 0.3s ease; padding-bottom: 2px;">Email</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/jacob-rubenstein-639ab8211" target="_blank" style="color: #4285f4; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center;">
+                            <span style="border-bottom: 2px solid transparent; transition: border-color 0.3s ease; padding-bottom: 2px;">LinkedIn</span>
+                        </a>
+                        <a href="https://drive.google.com/file/d/1U615cmMSmqGFyAJkVL-BcZOetINbHSIf/view?usp=sharing" target="_blank" style="color: #4285f4; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center;">
+                            <span style="border-bottom: 2px solid transparent; transition: border-color 0.3s ease; padding-bottom: 2px;">Resume</span>
+                        </a>
+                    </div>
                 </div>
                 <div class="hero-image fade-in">
                     <!-- Replace with your actual photo -->
-                    <img src="choice1.png" alt="Jacob Rubenstein" class="profile-img">
+                    <img src="again2.png" alt="Jacob Rubenstein" class="profile-img">
                 </div>
             </div>
         </div>
     </section>
+    
 
     <!-- Work Experience Section - Narrative Format -->
     <section id="experience">
@@ -468,7 +513,7 @@
                             <img src="recidiviz.png" alt="Recidiviz logo" class="narrative-image">
                         </div>
                         <p class="narrative-text">
-                            Working as a Data Science and Implementation Engineering Intern at <span class="bold">Recidiviz</span>, a non-profit <span class="highlight">building open-source infrastructure to reform the criminal justice system</span>. Developing machine learning models and predictive analytics to transform complex datasets into actionable insights for policy improvement. Passionate about <span class="highlight">using data as a catalyst for creating more equitable justice outcomes and reducing incarceration rates</span>, expanding Recidiviz's impact to communities most impacted by mass incarceration.
+                            Working as a Data Science and Implementation Engineering Intern at <span class="bold">Recidiviz</span>, a non-profit <span class="highlight">building open-source infrastructure to reform the criminal justice system</span>. Developing machine learning models and predictive analytics to transform complex datasets into actionable insights for policy improvement. <span class="highlight">Passionate about using data as a catalyst for creating more equitable justice outcomes and reducing incarceration rates</span>, expanding Recidiviz's impact to communities most impacted by mass incarceration.
                         </p>
                     </div>
                     <!-- Stanford PoliSci Experience -->
@@ -500,24 +545,7 @@
                             <img src="nist.jpg" alt="Photo at earlier company" class="narrative-image">
                         </div>
                         <p class="narrative-text">
-                            Served as an international team intern at the <span class = "bold">US AI Safety Institute (NIST)</span>, helping design technical objectives to evaluate frontier AI systems while coordinating with international counterparts. Developed standardized evaluation frameworks and designed technical assessments of emerging AI capabilities, translating results into actionable policy recommendations for senior leadership. Committed to <span class="highlight">ensuring AI technologies are developed safely and responsibly</span> worldwide, <span class="highlight">working toward technological progress that prioritizes human wellbeing and guards against potential risks as these powerful systems continue to advance</span>.
-                        </p>
-                    </div>
-                    <!-- Previous Experience 1 -->
-                    <div class="narrative-item">
-                        <div class="narrative-image-container">
-                            <img src="cr.png" alt="Photo at previous company" class="narrative-image">
-                        </div>
-                        <p class="narrative-text">
-                            Served as an AI Fellow at <span class = "bold">Consumer Reports</span>, optimizing AskCR's AI systems by enhancing Retrieval-Augmented Generation pipelines and implementing observability features for real-time monitoring and transparency. Conducted policy research on responsible AI deployment, developing a comprehensive state-level AI policy tracker and analyzing emerging regulatory approaches to AI technologies. <span class="highlight">Dedicated to working towards AI systems that are accessible and trustworthy for all users</span>.
-                        </p>
-                    </div>
-                    <div class="narrative-item">
-                        <div class="narrative-image-container">
-                            <img src="ddl.png" alt="Photo at previous company" class="narrative-image">
-                        </div>
-                        <p class="narrative-text">
-                            Worked as a Data Research Assistant at the <span class = "bold">Deliberative Democracy Lab</span>, engineering data pipelines and building machine learning models to analyze democratic processes and public sentiment. Collaborated with policy experts and government agencies to translate complex datasets into standardized reports that directly informed policy recommendations. Committed to <span class="highlight">strengthening democratic institutions through data-driven approaches</span>, promoting inclusive participation and informed discourse.
+                            Served as an international team intern at the <span class = "bold">US AI Safety Institute (NIST)</span>, helping design technical objectives to evaluate frontier AI systems while coordinating with international counterparts. Developed standardized evaluation frameworks and designed technical assessments of emerging AI capabilities, translating results into actionable policy recommendations for senior leadership. <span class="highlight">Committed to ensuring AI technologies are developed safely and responsibly</span> worldwide, <span class="highlight">working toward technological progress that prioritizes human wellbeing and guards against potential risks as these powerful systems continue to advance</span>.
                         </p>
                     </div>
                     <div id="button-container">
@@ -527,6 +555,25 @@
                         </button>
                     </div>
                     <div id="hidden-experiences" class="hidden-experiences">
+                    <!-- Previous Experience 1 -->
+                        <div class="narrative-item">
+                            <div class="narrative-image-container">
+                                <img src="cr.png" alt="Photo at previous company" class="narrative-image">
+                            </div>
+                            <p class="narrative-text">
+                                Served as an AI Fellow at <span class = "bold">Consumer Reports</span>, optimizing AskCR's AI systems by enhancing Retrieval-Augmented Generation pipelines and implementing observability features for real-time monitoring and transparency. Conducted policy research on responsible AI deployment, developing a comprehensive state-level AI policy tracker and analyzing emerging regulatory approaches to AI technologies. <span class="highlight">Dedicated to working towards AI systems that are accessible and trustworthy for all users</span>.
+                            </p>
+                        </div>
+                        <div class="narrative-item">
+                            <div class="narrative-image-container">
+                                <img src="ddl.png" alt="Photo at previous company" class="narrative-image">
+                            </div>
+                            <p class="narrative-text">
+                                Worked as a Data Research Assistant at the <span class = "bold">Deliberative Democracy Lab</span>, engineering data pipelines and building machine learning models to analyze democratic processes and public sentiment. Collaborated with policy experts and government agencies to translate complex datasets into standardized reports that directly informed policy recommendations. <span class="highlight">Committed to strengthening democratic institutions through data-driven approaches</span>, promoting inclusive participation and informed discourse.
+                            </p>
+                        </div>
+                    
+                    
                         <div class="narrative-item">
                             <div class="narrative-image-container">
                                 <img src="CPGlogo.png" alt="Photo at previous company" class="narrative-image">
@@ -557,69 +604,173 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects Section - MINIMALIST VERSION -->
     <section id="projects">
         <div class="container">
             <h2 class="section-title fade-in">Projects & Papers</h2>
             
             <div class="projects-grid">
-                <!-- Project 1 -->
+                <!-- First 3 visible projects - CONDENSED -->
                 <div class="project-card fade-in">
                     <img src="arch.png" alt="Project Title" class="project-image">
                     <div class="project-content">
                         <span class="project-category">CS Research</span>
-                        <h3 class="project-title">Improving Clinical Trial Outcome Prediction: Causal Machine Unlearning Approach and LLM Augmented Dataset Enhancement</h3>
-                        <p class="project-description">Developed a <span class="highlight">novel student-teacher framework to address spurious correlations</span> in pharmaceutical data prediction. Our approach extends existing architectures with <span class="highlight">dynamic UnLearning from Experience (dULE)</span> while leveraging LLMs to expand training datasets, targeting a field where <span class="highlight">accurate predictions can significantly impact human lives</span>.</p>
-                        <a href="https://drive.google.com/file/d/1Nj7YnAtVkOwbN2WSqgYwnKNrP1vr9qhj/view?usp=sharing" class="project-link">See Project Poster </a><br>
-                        <a href="https://drive.google.com/file/d/115A5DkazHlCd1dyRFRoHeN7FlhqB6Eb5/view?usp=sharing" class="project-link">Read Paper</a>
+                        <h3 class="project-title">Machine Learning Clinical Trial Outcome Prediction</h3>
+                        <p class="project-description">Developed a <span class="highlight">novel student-teacher framework</span> addressing spurious correlations in pharmaceutical data, using <span class="highlight">dynamic UnLearning from Experience</span> and LLM data augmentation.</p>
+                        <div class="project-links">
+                            <a href="https://drive.google.com/file/d/1Nj7YnAtVkOwbN2WSqgYwnKNrP1vr9qhj/view?usp=sharing" class="project-link" target="_blank">Poster</a>
+                            <a href="https://drive.google.com/file/d/115A5DkazHlCd1dyRFRoHeN7FlhqB6Eb5/view?usp=sharing" class="project-link" target="_blank">Paper</a>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Project 2 -->
                 <div class="project-card fade-in">
-                    <img src="desmos.png" alt="Project Title" class="project-image">
+                    <img src="crall.jpeg" alt="Paper Title" class="project-image">
                     <div class="project-content">
-                        <span class="project-category">Math Research Paper</span>
-                        <h3 class="project-title">Hermite Polynomials: Theory and Applications</h3>
-                        <p class="project-description">Conducted mathematical research on Hermite polynomials, <span class="highlight">deriving their properties from differential equations and exploring their orthogonality relationships through Sturm-Liouville theory</span>. Demonstrated practical applications in function approximation by developing Hermite series expansions, <span class="highlight">showing how these polynomials efficiently represent functions with Gaussian characteristics for use in quantum mechanics and numerical analysis.</span></p>
-                        <a href="https://drive.google.com/file/d/1oMV9EZGgjJCPLJq7XAJHeostDdTB-VUb/view?usp=sharing" class="project-link">Read Paper</a>
+                        <span class="project-category">AI Policy</span>
+                        <h3 class="project-title">State AI Legislation Tracker</h3>
+                        <p class="project-description">Led development of a comprehensive tracker analyzing state-level AI bills, <span class="highlight">identifying regulatory patterns for policymakers</span> working on AI governance.</p>
+                        <div class="project-links">
+                            <a href="https://drive.google.com/file/d/1uG1LGpTSx2GGbN8RgDevVYKHMoSMkba1/view?usp=sharing" class="project-link" target="_blank">Tracker</a>
+                            <a href="https://innovation.consumerreports.org/cr-ai-fellow-building-a-state-level-ai-policy-tracker/" class="project-link" target="_blank">Blog Post</a>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Paper 1 -->
                 <div class="project-card fade-in">
                     <img src="treehacks_logo.jpeg" alt="Paper Title" class="project-image">
                     <div class="project-content">
                         <span class="project-category">TreeHacks</span>
-                        <h3 class="project-title">TreeHacks 2024 Opening Ceremony Video</h3>
-                        <p class="project-description">Helped create and starred in the TreeHacks Opening Ceremony video that <span class="highlight">welcomed 1500+ participants to Stanford's premier hackathon</span>. Introduced the event's vision, highlighted key features of the weekend, and energized the crowd!</p>
-                        <a href="https://drive.google.com/file/d/1KnMQ_-JK2Q7QKa3Z5yKBYb8z2wCf6XaU/view?usp=sharing" class="project-link">Watch Video</a>
+                        <h3 class="project-title">TreeHacks 2024 Opening Video</h3>
+                        <p class="project-description">Created and starred in the opening ceremony video that <span class="highlight">welcomed 1500+ participants</span> to Stanford's premier hackathon.</p>
+                        <div class="project-links">
+                            <a href="https://drive.google.com/file/d/1KnMQ_-JK2Q7QKa3Z5yKBYb8z2wCf6XaU/view?usp=sharing" class="project-link" target="_blank">Watch Video</a>
+                        </div>
                     </div>
                 </div>
                 <div class="project-card fade-in">
-                    <img src="treehacks_logo.jpeg" alt="Paper Title" class="project-image">
-                    <div class="project-content">
-                        <span class="project-category">TreeHacks</span>
-                        <h3 class="project-title">TreeHacks 2025 Opening Ceremony Video</h3>
-                        <p class="project-description">Helped create and starred in the TreeHacks Opening Ceremony video that <span class="highlight">welcomed 1500+ participants to Stanford's premier hackathon</span>. Introduced the event's vision, highlighted key features of the weekend, and energized the crowd!</p>
-                        <a href="https://drive.google.com/file/d/1KnMQ_-JK2Q7QKa3Z5yKBYb8z2wCf6XaU/view?usp=sharing" class="project-link">Watch Video</a>
+                        <img src="PathSenseProject.webp" alt="Project Title" class="project-image">
+                        <div class="project-content">
+                            <span class="project-category">CS Project</span>
+                            <h3 class="project-title">Hack The North: PathSense</h3>
+                            <p class="project-description">Developed an AI-powered indoor navigation system that <span class="highlight">guides visually impaired users through voice commands</span> using computer vision and real-time scene description technology. <span class = "highlight">Won first place at Hack the North 2024.</span></p>
+                            <div class="project-links">
+                                <a href="https://devpost.com/software/pathsense-athy2r#updates" class="project-link" target="_blank">Devpost</a>
+                                <a href="https://www.youtube.com/live/I5dP9mbnx4M?si=mSYiU7WKp6DLslpm&t=6264" class="project-link" target="_blank">Video of Winning!</a>
+                            </div>
+                        </div>
+                    </div>
+                <!-- Show More button container -->
+                <div id="projects-button-container" class="button-container" style="grid-column: 1 / -1; text-align: center;">
+                    <button id="projects-show-more-btn" class="show-more-btn">
+                        <span>Show More</span>
+                        <i>↓</i>
+                    </button>
+                </div>
+                
+                <!-- Hidden projects container - CONDENSED -->
+                <div id="hidden-projects" class="hidden-experiences">
+                    <div class="project-card fade-in">
+                        <img src="desmos.png" alt="Project Title" class="project-image">
+                        <div class="project-content">
+                            <span class="project-category">Math Research</span>
+                            <h3 class="project-title">Hermite Polynomials</h3>
+                            <p class="project-description">Researched Hermite polynomials, <span class="highlight">deriving properties from differential equations</span> and exploring applications in quantum mechanics.</p>
+                            <div class="project-links">
+                                <a href="https://drive.google.com/file/d/1oMV9EZGgjJCPLJq7XAJHeostDdTB-VUb/view?usp=sharing" class="project-link" target="_blank">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card fade-in">
+                        <img src="treehacks_logo.jpeg" alt="Paper Title" class="project-image">
+                        <div class="project-content">
+                            <span class="project-category">TreeHacks</span>
+                            <h3 class="project-title">TreeHacks 2025 Opening Video</h3>
+                            <p class="project-description">Directed, filmed, and edited the opening ceremony video for Stanford's hackathon, introducing the event vision to <span class="highlight">1500+ participants</span>.</p>
+                            <div class="project-links">
+                                <a href="https://drive.google.com/file/d/1RtOrPb5qoMMGWQq4XeFx-QLo1A6jJW1k/view?usp=sharing" class="project-link" target="_blank">Watch Video</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <div class="project-card fade-in">
+                        <img src="askcr.png" alt="Project Title" class="project-image">
+                        <div class="project-content">
+                            <span class="project-category">CS Research</span>
+                            <h3 class="project-title">Trust & Safety in Generative AI</h3>
+                            <p class="project-description">Designed observability features for AskCR that reveal AI processes to users, <span class="highlight">increasing transparency in generative AI systems</span>.</p>
+                            <div class="project-links">
+                                <a href="https://innovation.consumerreports.org/initiatives/askcr/" class="project-link" target="_blank">AskCR</a>
+                                <a href="https://innovation.consumerreports.org/cr-ai-fellow-building-trust-and-safety-in-generative-ai-through-observability/" class="project-link" target="_blank">Blog Post</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card fade-in">
+                        <img src="vsee.png" alt="Project Title" class="project-image">
+                        <div class="project-content">
+                            <span class="project-category">CS Project</span>
+                            <h3 class="project-title">Environmental Health Dashboard</h3>
+                            <p class="project-description">Developed a data visualization + ML platform for mapping environmental sensor data, <span class = "highlight">helping policymakers understand health factors in the Philippines.</span></p>
+                            <div class="project-links">
+                                <a href="https://drive.google.com/file/d/1RmrIT6md5FAbzH-IKjS3r1LU-4hr17xD/view?usp=sharing" class="project-link" target="_blank">Presentation</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <img src="hyperplanes.jpg" alt="Project Title" class="project-image">
+                        <div class="project-content">
+                            <span class="project-category">Math Research</span>
+                            <h3 class="project-title">Cryptography: Secret Sharing Schemes</h3>
+                            <p class="project-description">Analyzed mathematical principles of threshold schemes that securely distribute sensitive information among multiple parties, <span class = "highlight">comparing Shamir's polynomial approach with Blakley's geometric method.</span></p>
+                            <div class="project-links">
+                                <a href="https://drive.google.com/file/d/1nJQheQIfkQzz_nv0315wyz5h36lMBu5f/view?usp=sharing" class="project-link" target="_blank">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card fade-in">
+                        <img src="real.jpg" alt="Project Title" class="project-image">
+                        <div class="project-content">
+                            <span class="project-category">Math Research</span>
+                            <h3 class="project-title">Series Rearrangment Theory</h3>
+                            <p class="project-description">Investigated infinite series rearrangements, <span class="highlight">proving when term reordering preserves convergence</span> and when it can yield any desired limit.</p>
+                            <div class="project-links">
+                                <a href="https://drive.google.com/file/d/1d1XM-hEpHWWWnAjnchlykPIszvjTJQtK/view?usp=sharing" class="project-link" target="_blank">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <img src="bias.jpg" alt="Project Title" class="project-image">
+                        <div class="project-content">
+                            <span class="project-category">CS Research</span>
+                            <h3 class="project-title">Unveiling News Biases</h3>
+                            <p class="project-description">Applied machine learning to analyze news transcripts, <span class="highlight">revealing distinct political reporting patterns</span> across major networks through TF-IDF vectorization and clustering algorithms.</p>
+                            <div class="project-links">
+                                <a href="https://drive.google.com/file/d/1rR2-VPBqibiqt165UCnb4y3T7Qqyk4pS/view?usp=sharing" class="project-link" target="_blank">Poster</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card fade-in">
+                        <img src="parties.jpg" alt="Project Title" class="project-image">
+                        <div class="project-content">
+                            <span class="project-category">CS Research</span>
+                            <h3 class="project-title">Partisan Sentiment Online</h3>
+                            <p class="project-description">Used machine learning to analyze political sentiment on Reddit, <span class="highlight">revealing distinct topic correlations</span> between Democratic and Republican online discussions through BERT-based classification.</p>
+                            <div class="project-links">
+                                <a href="https://drive.google.com/file/d/14mh7VnaVtzuSuk-vJswXnFtu_XnVIN7D/view?usp=sharing" class="project-link" target="_blank">Paper</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- Simple Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title fade-in">Get In Touch</h2>
-            <p class="fade-in" style="text-align: center; margin-top: 40px;">
-                <a href="mailto:your.email@example.com" style="margin: 0 15px; font-weight: 500;">Email</a>
-                <a href="https://linkedin.com/in/yourprofile" target="_blank" style="margin: 0 15px; font-weight: 500;">LinkedIn</a>
-                <a href="https://github.com/yourusername" target="_blank" style="margin: 0 15px; font-weight: 500;">GitHub</a>
-            </p>
-        </div>
-    </section>
+    
 
     <script>
         // Animated name effect
@@ -684,7 +835,34 @@
                     }
                 });
             }
-        });
+        
+        const projectsShowMoreBtn = document.getElementById('projects-show-more-btn');
+        const hiddenProjects = document.getElementById('hidden-projects');
+        const projectsButtonContainer = document.getElementById('projects-button-container');
+        
+        if (projectsShowMoreBtn && hiddenProjects) {
+            projectsShowMoreBtn.addEventListener('click', function() {
+                hiddenProjects.classList.toggle('visible');
+                projectsShowMoreBtn.classList.toggle('expanded');
+                
+                if (projectsShowMoreBtn.classList.contains('expanded')) {
+                    projectsShowMoreBtn.querySelector('span').textContent = 'Show Less';
+                    // Need to add a container to place the button after all the cards
+                    const buttonWrapper = document.createElement('div');
+                    buttonWrapper.style.gridColumn = '1 / -1';
+                    buttonWrapper.style.textAlign = 'center';
+                    buttonWrapper.style.marginTop = '20px';
+                    buttonWrapper.appendChild(projectsShowMoreBtn);
+                    // Append the button wrapper after the last project card
+                    hiddenProjects.appendChild(buttonWrapper);
+                } else {
+                    projectsShowMoreBtn.querySelector('span').textContent = 'Show More';
+                    // Move button back to original position
+                    projectsButtonContainer.appendChild(projectsShowMoreBtn);
+                }
+            });
+        }
+    });
     </script>
 </body>
 </html>
