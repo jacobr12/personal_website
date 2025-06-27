@@ -445,6 +445,96 @@
                 display: none;
             }
         }
+                .mini-course-cards {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        }
+
+        .mini-card {
+        width: 100px;
+        height: 100px;
+        perspective: 800px;
+        position: relative;
+        }
+
+        .mini-card > div {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        backface-visibility: hidden;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        font-size: 0.7rem;
+        font-weight: 500;
+        text-align: center;
+        transition: transform 0.6s ease;
+        }
+
+        .mini-front {
+        background: #f0f4ff;
+        color: #4285f4;
+        }
+
+        .mini-back {
+        background: #fff;
+        color: #333;
+        transform: rotateY(180deg);
+        }
+
+        .mini-card {
+        transform-style: preserve-3d;
+        transition: transform 0.6s;
+        }
+
+        .mini-card:hover {
+        transform: rotateY(180deg);
+        }
+        .course-hover {
+        position: relative;
+        font-weight: 500;
+        color: #4285f4;
+        cursor: pointer;
+        border-bottom: 1px dashed #b5d1ff;
+        }
+
+        .hover-popup {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 1.8em;                /* 👈 tighter vertical spacing */
+  left: 0;
+  background-color: #ffffff;
+  color: #333;
+  font-size: 0.8rem;
+  white-space: pre-line;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: opacity 0.3s ease;
+  z-index: 10;
+  width: max-content;
+  max-width: 240px;
+}
+
+.course-hover:hover .hover-popup {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0); /* Pop upward into place */
+}
+
+
+        .course-hover:hover .hover-popup {
+        visibility: visible;
+        opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -474,7 +564,21 @@
                 <div class="hero-content fade-in">
                     <h1 class="hero-title">Hello, I'm <span class="highlight">Jacob Rubenstein</span></h1>
                     <div class="accent-bar"></div>
-                    <p class="hero-subtitle"> I'm a junior at Stanford studying Computer Science, Math, and Public Policy. I'm continuously developing my technical and quantitative skills through classes, experiences, and projects. I enjoy learning about how thoughtful policy frameworks can guide equitable and beneficial outcomes. My passion lies in ensuring that technology is created and deployed in a responsible manner, working at the intersection of innovation, social impact, and policy to shape how technology benefits society.</p>
+                    <p class="hero-subtitle">
+                        I'm a junior at Stanford studying Computer Science, Math, and Public Policy. I'm continuously developing my technical and quantitative skills through classes, experiences, and projects. I enjoy learning about how thoughtful policy frameworks can guide equitable and beneficial outcomes. I’ve had the chance to explore 
+                        <span class="course-hover">technical CS
+                            <span class="hover-popup">CS231N: Deep Learning for Computer Vision<br>CS229: Machine Learning<br>CS205L: Continuous Mathematical Methods for Machine Learning<br>CS124: From Languages to Information</span>
+                        </span>, 
+                        <span class="course-hover">advanced math,
+                            <span class="hover-popup">Math 171: Real Analysis<br>Math 108: Applied Combinatorics<br>Math 110: Number Theory for Cryptography<br>Math 131P: Partial Differential Equations</span>
+                        </span>and 
+                        <span class="course-hover">policy and society
+                            <span class="hover-popup">Econ102B: Applied Econometrics<br>PUBLPOL101: Defense of Democracy<br>Polisci 22: Politics of Growth<br>ETHICSOC85: Tech, Ethics, Policy<br>STS 10SI: AI Alignment</span>
+                        </span> 
+                        through coursework that shaped how I think about responsible innovation. My passion lies in ensuring that technology is created and deployed in a responsible manner, working at the intersection of innovation, social impact, and policy to shape how technology benefits society.
+                        </p>
+
+
                     <!-- Contact Links -->
                     <div class="contact-links" style="margin-top: 15px; display: flex; gap: 20px;">
                         <a href="mailto:jacobr1@stanford.edu" style="color: #4285f4; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center;">
@@ -487,6 +591,7 @@
                             <span style="border-bottom: 2px solid transparent; transition: border-color 0.3s ease; padding-bottom: 2px;">Resume</span>
                         </a>
                     </div>
+                    
                 </div>
                 <div class="hero-image fade-in">
                     <!-- Replace with your actual photo -->
